@@ -6,24 +6,24 @@ export async function updatePassword(email, hashedPassword) {
     password: hashedPassword,
   };
   return await client
-    .db("b42wd2")
+    .db("b53we2")
     .collection("Eusers")
     .updateOne({ email: email }, { $set: updated });
 }
 
 export async function getUserByName(email) {
   return await client
-    .db("b42wd2")
+    .db("b53we2")
     .collection("Eusers")
     .findOne({ email: email });
 }
 
 export async function getOtp(OTP) {
-  return await client.db("b42wd2").collection("Eusers").findOne({ OTP: OTP });
+  return await client.db("b53we2").collection("Eusers").findOne({ OTP: OTP });
 }
 
 export async function addUser(data) {
-  return await client.db("b42wd2").collection("Eusers").insertOne(data);
+  return await client.db("b53we2").collection("Eusers").insertOne(data);
 }
 
 export async function updateOtp(email, randomNumber) {
@@ -31,7 +31,7 @@ export async function updateOtp(email, randomNumber) {
     OTP: randomNumber,
   };
   return await client
-    .db("b42wd2")
+    .db("b53we2")
     .collection("Eusers")
     .updateOne({ email: email }, { $set: updated });
 }
@@ -41,14 +41,14 @@ export async function deleteOtp(otp) {
     OTP: otp,
   };
   return await client
-    .db("b42wd2")
+    .db("b53we2")
     .collection("Eusers")
     .updateOne({ OTP: otp }, { $unset: data });
 }
 
 export async function updateName(id, Updated) {
   return await client
-    .db("b42wd2")
+    .db("b53we2")
     .collection("Eusers")
     .updateOne({ _id: new ObjectId(id) }, { $set: Updated });
 }
